@@ -5,6 +5,7 @@
  */
 package com.leho.daftar;
 
+import com.leho.login.user.loginUserFrame;
 import com.leho.pemesanan.pemesananFrame;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -190,7 +191,7 @@ public class daftarFrame extends javax.swing.JFrame {
             Logger.getLogger(daftarFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        pemesananFrame pf = new pemesananFrame();
+        loginUserFrame pf = new loginUserFrame();
         pf.setVisible(true);
         pf.pack();
         pf.setLocationRelativeTo(null);

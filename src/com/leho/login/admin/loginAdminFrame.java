@@ -117,6 +117,7 @@ public class loginAdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_keluarAdminActionPerformed
 
     private void masukAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masukAdminActionPerformed
+        MyConnection.buka_koneksi();
         PreparedStatement ps;
         ResultSet rs;
         
@@ -125,7 +126,7 @@ public class loginAdminFrame extends javax.swing.JFrame {
         
         String query ="SELECT * FROM `admin` WHERE `username`=? AND`password`=?";
         try {
-            ps = MyConnection.getConnection().prepareStatement(query);
+            ps = MyConnection.koneksi.prepareStatement(query);
             
             ps.setString(1, user);
             ps.setString(2, password);

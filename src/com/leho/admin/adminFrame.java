@@ -41,13 +41,13 @@ public class adminFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        stokSatu = new javax.swing.JTextField();
-        stokDua = new javax.swing.JTextField();
-        stokTiga = new javax.swing.JTextField();
-        hargaSatu = new javax.swing.JTextField();
-        hargaDua = new javax.swing.JTextField();
-        hargaTiga = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        stokEkonomi = new javax.swing.JTextField();
+        stokVip = new javax.swing.JTextField();
+        stokVvip = new javax.swing.JTextField();
+        hargaEkonomi = new javax.swing.JTextField();
+        hargaVip = new javax.swing.JTextField();
+        hargaVvip = new javax.swing.JTextField();
+        btnSimpan = new javax.swing.JButton();
         hapusAdm = new javax.swing.JButton();
         updateAdm = new javax.swing.JButton();
         keluarAdm = new javax.swing.JButton();
@@ -62,13 +62,18 @@ public class adminFrame extends javax.swing.JFrame {
 
         jLabel3.setText("VVIP");
 
-        hargaSatu.addActionListener(new java.awt.event.ActionListener() {
+        hargaEkonomi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hargaSatuActionPerformed(evt);
+                hargaEkonomiActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Simpan");
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
         hapusAdm.setText("Hapus");
         hapusAdm.addActionListener(new java.awt.event.ActionListener() {
@@ -111,16 +116,16 @@ public class adminFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel1))
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(stokSatu, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(stokDua, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(stokTiga, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(stokEkonomi, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(stokVip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(stokVvip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(hargaTiga, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                                    .addComponent(hargaSatu, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hargaDua, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addComponent(hargaVvip, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                    .addComponent(hargaEkonomi, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(hargaVip, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hapusAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,25 +148,25 @@ public class adminFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(stokSatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hargaSatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stokEkonomi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hargaEkonomi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(hargaDua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(stokDua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(hargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stokVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(stokTiga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(hargaTiga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(stokVvip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(hargaVvip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSimpan)
                     .addComponent(hapusAdm)
                     .addComponent(updateAdm)
                     .addComponent(keluarAdm))
@@ -184,20 +189,21 @@ public class adminFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_keluarAdmActionPerformed
 
-    private void hargaSatuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaSatuActionPerformed
+    private void hargaEkonomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaEkonomiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_hargaSatuActionPerformed
+    }//GEN-LAST:event_hargaEkonomiActionPerformed
 
     private void updateAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAdmActionPerformed
+        MyConnection.buka_koneksi();
         PreparedStatement ps;
         ResultSet rs;
         
-        String harga = hargaSatu.getText();
-        String stok = stokSatu.getText();
+        String harga = hargaEkonomi.getText();
+        String stok = stokEkonomi.getText();
         
         String query = "INSERT INTO `ekonomi`(`harga', 'stok' ) VALUES (?,?)";
         try {
-            ps = MyConnection.getConnection().prepareStatement(query);
+            ps = MyConnection.koneksi.prepareStatement(query);
             
             ps.setString(1, harga);
             ps.setString(2, stok);
@@ -213,6 +219,35 @@ public class adminFrame extends javax.swing.JFrame {
             Logger.getLogger(adminFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_updateAdmActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+        MyConnection.buka_koneksi();
+        String sqlkode1 ="INSERT INTO ekonomi(stok,harga)"+
+                "VALUES("+this.stokEkonomi.getText()+","
+                + ""+this.hargaEkonomi.getText()+")";
+        String sqlkode2 = "INSERT INTO vip(stok,harga)"+
+                "VALUES("+this.stokVip.getText()+","
+                + ""+this.hargaVip.getText()+")";
+        String sqlkode3 ="INSERT INTO vvip(stok,harga)"+
+                "VALUES("+this.stokVvip.getText()+","
+                + ""+this.hargaVvip.getText()+")";
+        try {
+            PreparedStatement mStatement = MyConnection.koneksi.prepareStatement(sqlkode1);
+            PreparedStatement mStatement1 = MyConnection.koneksi.prepareStatement(sqlkode2);
+            PreparedStatement mStatement2 = MyConnection.koneksi.prepareStatement(sqlkode3);
+            mStatement.executeUpdate();
+            mStatement1.executeUpdate();
+            mStatement2.executeUpdate();
+            mStatement1.close();
+            mStatement2.close();
+            mStatement.close();
+            JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Terjadi Kesalahan"+e.getMessage());
+        }
+ 
+    }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void clearFields() {
         hapusAdm.setVisible(true);
@@ -255,18 +290,18 @@ public class adminFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label Harga;
     private java.awt.Label Stok;
+    private javax.swing.JButton btnSimpan;
     private javax.swing.JButton hapusAdm;
-    private javax.swing.JTextField hargaDua;
-    private javax.swing.JTextField hargaSatu;
-    private javax.swing.JTextField hargaTiga;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField hargaEkonomi;
+    private javax.swing.JTextField hargaVip;
+    private javax.swing.JTextField hargaVvip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton keluarAdm;
-    private javax.swing.JTextField stokDua;
-    private javax.swing.JTextField stokSatu;
-    private javax.swing.JTextField stokTiga;
+    private javax.swing.JTextField stokEkonomi;
+    private javax.swing.JTextField stokVip;
+    private javax.swing.JTextField stokVvip;
     private javax.swing.JButton updateAdm;
     // End of variables declaration//GEN-END:variables
 }

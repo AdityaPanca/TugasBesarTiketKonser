@@ -17,16 +17,18 @@ import java.util.logging.Logger;
  */
 public class MyConnection{
         
-    public static Connection getConnection(){
-       
-        Connection con = null;
-   
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/login", "root", "");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+    public static Connection koneksi;
+    public static void buka_koneksi(){
+        if(koneksi == null){
+            try {
+            String url = "jdbc:mysql://localhost:3306/login";
+            String user = "root";
+            String password = "";
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            koneksi = DriverManager.getConnection(url,user,password);
+            } catch (SQLException e) {
+                System.out.println("Error membuat koneksi");
+            }
         }
-        return con;
-    } 
+    }
 }

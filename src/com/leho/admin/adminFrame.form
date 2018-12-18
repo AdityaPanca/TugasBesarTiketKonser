@@ -36,19 +36,19 @@
                               </Group>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="stokSatu" min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Component id="stokDua" min="-2" pref="74" max="-2" attributes="0"/>
-                                  <Component id="stokTiga" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="stokEkonomi" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="stokVip" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="stokVvip" min="-2" pref="74" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="hargaTiga" pref="85" max="32767" attributes="0"/>
-                                  <Component id="hargaSatu" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="hargaDua" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="hargaVvip" pref="85" max="32767" attributes="0"/>
+                                  <Component id="hargaEkonomi" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="hargaVip" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jButton1" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="btnSimpan" min="-2" pref="87" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="hapusAdm" min="-2" pref="83" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -79,16 +79,16 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="stokSatu" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="hargaSatu" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="stokEkonomi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="hargaEkonomi" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hargaDua" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hargaVip" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="stokDua" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="stokVip" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -96,14 +96,14 @@
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="stokTiga" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="stokVvip" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="hargaTiga" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="hargaVvip" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="hapusAdm" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="updateAdm" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="keluarAdm" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -129,25 +129,28 @@
         <Property name="text" type="java.lang.String" value="VVIP"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="stokSatu">
+    <Component class="javax.swing.JTextField" name="stokEkonomi">
     </Component>
-    <Component class="javax.swing.JTextField" name="stokDua">
+    <Component class="javax.swing.JTextField" name="stokVip">
     </Component>
-    <Component class="javax.swing.JTextField" name="stokTiga">
+    <Component class="javax.swing.JTextField" name="stokVvip">
     </Component>
-    <Component class="javax.swing.JTextField" name="hargaSatu">
+    <Component class="javax.swing.JTextField" name="hargaEkonomi">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hargaSatuActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hargaEkonomiActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="hargaDua">
+    <Component class="javax.swing.JTextField" name="hargaVip">
     </Component>
-    <Component class="javax.swing.JTextField" name="hargaTiga">
+    <Component class="javax.swing.JTextField" name="hargaVvip">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>
         <Property name="text" type="java.lang.String" value="Simpan"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="hapusAdm">
       <Properties>

@@ -129,6 +129,7 @@ public class loginUserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+        MyConnection.buka_koneksi();
         PreparedStatement ps;
         ResultSet rs;
         
@@ -137,7 +138,7 @@ public class loginUserFrame extends javax.swing.JFrame {
         
         String query ="SELECT * FROM `users` WHERE `username`=? AND `password`=?";
         try {
-            ps = MyConnection.getConnection().prepareStatement(query);
+            ps = MyConnection.koneksi.prepareStatement(query);
             
             ps.setString(1, user);
             ps.setString(2, password);

@@ -152,7 +152,7 @@ public class daftarFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-       
+        MyConnection.buka_koneksi();
         String nama = regName.getText();
         String user = regUser.getText();
         String password = String.valueOf(regPass.getPassword());
@@ -162,7 +162,7 @@ public class daftarFrame extends javax.swing.JFrame {
         PreparedStatement ps;
         String query = "INSERT INTO `users`(`nama`, `username`, `password`, `alamat`, `email`) VALUES (?,?,?,?,?)";
         try {
-            ps = MyConnection.getConnection().prepareStatement(query);
+            ps = MyConnection.koneksi.prepareStatement(query);
             
             ps.setString(1, nama);
             ps.setString(2, user);
@@ -200,13 +200,14 @@ public class daftarFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     public boolean checkUsername (String user){
+        MyConnection.buka_koneksi();
         PreparedStatement ps;
         ResultSet rs;
         boolean checkUser = false;
         String query ="SELECT * FROM `users` WHERE `username`=?";
         
         try {
-            ps = MyConnection.getConnection().prepareStatement(query);
+            ps = MyConnection.koneksi.prepareStatement(query);
             ps.setString(1, user);
             
             rs = ps.executeQuery();

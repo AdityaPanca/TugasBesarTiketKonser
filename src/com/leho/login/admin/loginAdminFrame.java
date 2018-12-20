@@ -6,7 +6,7 @@
 package com.leho.login.admin;
 
 import com.leho.admin.adminFrame;
-import com.leho.daftar.MyConnection;
+import com.leho.config.MyConnection;
 import com.leho.login.loginFrame;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,18 +15,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import com.leho.service.*;
+import com.leho.tiket.*;
+import java.sql.Connection;
 /**
  *
  * @author satya
  */
 public class loginAdminFrame extends javax.swing.JFrame {
 
+    public static serviceLogin userLogin;
+    private static Connection connection;
+    public static userModel usermodel = new userModel();
     /**
      * Creates new form loginAdminFrame
      */
     public loginAdminFrame() {
+        
         initComponents();
+        userLogin = new MyConnection();
+
     }
 
     /**
@@ -117,31 +125,19 @@ public class loginAdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_keluarAdminActionPerformed
 
     private void masukAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masukAdminActionPerformed
-        MyConnection.buka_koneksi();
-        PreparedStatement ps;
-        ResultSet rs;
-        
-        String user = userAdmin.getText();
-        String password = String.valueOf(passwordAdmin.getPassword());
-        
-        String query ="SELECT * FROM `admin` WHERE `username`=? AND`password`=?";
-        try {
-            ps = MyConnection.koneksi.prepareStatement(query);
-            
-            ps.setString(1, user);
-            ps.setString(2, password);
-            
-            rs = ps.executeQuery();
-            
+            usermodel.setUsername(userAdmin.getText());
+	    ResultSet rs = userLogin.cekLoginAdmin(userAdmin.getText(), passwordAdmin.getText());
+            try {
             if(rs.next()){
+		usermodel.setUsername(rs.getString("username"));
                 JOptionPane.showMessageDialog(null, "YES");
-            }else {
+            }else{
                 JOptionPane.showMessageDialog(null, "NO");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(loginAdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(loginAdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+
         }
-        
     adminFrame af = new adminFrame();
         af.setVisible(true);
         af.pack();

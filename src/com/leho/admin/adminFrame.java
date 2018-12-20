@@ -5,9 +5,10 @@
  */
 package com.leho.admin;
 
-import com.leho.daftar.MyConnection;
+import com.leho.config.MyConnection;
 import com.leho.login.loginFrame;
 import com.leho.login.user.loginUserFrame;
+import com.leho.service.serviceTiket;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,17 +16,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import com.leho.tiket.*;
 /**
  *
  * @author satya
  */
 public class adminFrame extends javax.swing.JFrame {
-
+     private  serviceTiket tiket;
     /**
      * Creates new form adminFrame
      */
+    
     public adminFrame() {
+        tiket =new MyConnection();
         initComponents();
     }
     
@@ -194,59 +197,23 @@ public class adminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_hargaEkonomiActionPerformed
 
     private void updateAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAdmActionPerformed
-        MyConnection.buka_koneksi();
-        PreparedStatement ps;
-        ResultSet rs;
-        
-        String harga = hargaEkonomi.getText();
-        String stok = stokEkonomi.getText();
-        
-        String query = "INSERT INTO `ekonomi`(`harga', 'stok' ) VALUES (?,?)";
-        try {
-            ps = MyConnection.koneksi.prepareStatement(query);
+//            String stok = stokEkonomi.getText();
+//            String harga = hargaEkonomi.getText();
+//            
+//            Ekonomi e = new Ekonomi();
+//            e.setStok(stok);
+//            e.setHarga(harga);
+//            
+//            eko.insertEkonomi(e);
             
-            ps.setString(1, harga);
-            ps.setString(2, stok);
-            
-            rs = ps.executeQuery();
-            
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "YES");
-            }else {
-                JOptionPane.showMessageDialog(null, "NO");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(adminFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_updateAdmActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
-        MyConnection.buka_koneksi();
-        String sqlkode1 ="INSERT INTO ekonomi(stok,harga)"+
-                "VALUES("+this.stokEkonomi.getText()+","
-                + ""+this.hargaEkonomi.getText()+")";
-        String sqlkode2 = "INSERT INTO vip(stok,harga)"+
-                "VALUES("+this.stokVip.getText()+","
-                + ""+this.hargaVip.getText()+")";
-        String sqlkode3 ="INSERT INTO vvip(stok,harga)"+
-                "VALUES("+this.stokVvip.getText()+","
-                + ""+this.hargaVvip.getText()+")";
-        try {
-            PreparedStatement mStatement = MyConnection.koneksi.prepareStatement(sqlkode1);
-            PreparedStatement mStatement1 = MyConnection.koneksi.prepareStatement(sqlkode2);
-            PreparedStatement mStatement2 = MyConnection.koneksi.prepareStatement(sqlkode3);
-            mStatement.executeUpdate();
-            mStatement1.executeUpdate();
-            mStatement2.executeUpdate();
-            mStatement1.close();
-            mStatement2.close();
-            mStatement.close();
-            JOptionPane.showMessageDialog(this, "Data Berhasil Disimpan");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Terjadi Kesalahan"+e.getMessage());
-        }
- 
+        tiket.inputEkonomi(stokEkonomi.getText(), hargaEkonomi.getText());
+        tiket.inputVip(stokVip.getText(), hargaVip.getText());
+        tiket.inputVvip(stokVvip.getText(), hargaVvip.getText());
+       JOptionPane.showMessageDialog(rootPane, "Data berhasil ditambah");
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void clearFields() {

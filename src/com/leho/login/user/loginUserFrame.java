@@ -5,7 +5,7 @@
  */
 package com.leho.login.user;
 
-import com.leho.daftar.MyConnection;
+import com.leho.config.MyConnection;
 import com.leho.daftar.daftarFrame;
 import com.leho.login.loginFrame;
 import com.leho.pemesanan.pemesananFrame;
@@ -129,30 +129,31 @@ public class loginUserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
-        MyConnection.buka_koneksi();
-        PreparedStatement ps;
-        ResultSet rs;
-        
-        String user = userLogin.getText();
-        String password = String.valueOf(userPassword.getPassword());
-        
-        String query ="SELECT * FROM `users` WHERE `username`=? AND `password`=?";
-        try {
-            ps = MyConnection.koneksi.prepareStatement(query);
-            
-            ps.setString(1, user);
-            ps.setString(2, password);
-            
-            rs = ps.executeQuery();
-            
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "YES");
-            }else {
-                JOptionPane.showMessageDialog(null, "NO");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(loginUserFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        MyConnection.buka_koneksi();
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        
+//        String user = userLogin.getText();
+//        String password = String.valueOf(userPassword.getPassword());
+//        
+//        String query ="SELECT * FROM `users` WHERE `username`=? AND `password`=?";
+//        try {
+//            ps = MyConnection.koneksi.prepareStatement(query);
+//            
+//            ps.setString(1, user);
+//            ps.setString(2, password);
+//            
+//            rs = ps.executeQuery();
+//            
+//            if(rs.next()){
+//                JOptionPane.showMessageDialog(null, "YES");
+//            }else {
+//                JOptionPane.showMessageDialog(null, "NO");
+//                
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(loginUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
         pemesananFrame pf = new pemesananFrame();
         pf.setVisible(true);

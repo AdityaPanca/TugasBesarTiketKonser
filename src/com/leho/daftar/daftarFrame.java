@@ -5,6 +5,7 @@
  */
 package com.leho.daftar;
 
+import com.leho.config.MyConnection;
 import com.leho.login.user.loginUserFrame;
 import com.leho.pemesanan.pemesananFrame;
 import java.sql.PreparedStatement;
@@ -152,44 +153,44 @@ public class daftarFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        MyConnection.buka_koneksi();
-        String nama = regName.getText();
-        String user = regUser.getText();
-        String password = String.valueOf(regPass.getPassword());
-        String alamat = regAlamat.getText();
-        String email = regEmail.getText();
-        
-        PreparedStatement ps;
-        String query = "INSERT INTO `users`(`nama`, `username`, `password`, `alamat`, `email`) VALUES (?,?,?,?,?)";
-        try {
-            ps = MyConnection.koneksi.prepareStatement(query);
-            
-            ps.setString(1, nama);
-            ps.setString(2, user);
-            ps.setString(3, password);
-            ps.setString(4, alamat);
-            ps.setString(5, email);
-            
-            if (user.equals("")){
-                JOptionPane.showInternalMessageDialog(null, "menambah username");
-            }
-                
-            else if (password.equals("")){
-                JOptionPane.showInternalMessageDialog(null, "menambah password");
-            }
-            
-            else if(checkUsername(user)){
-                JOptionPane.showMessageDialog(null, "Username telah ada");
-            }
-            
-            if(ps.executeUpdate() > 0){
-                JOptionPane.showMessageDialog(null,"user telah terdaftar");
-            } 
-                
-         
-        } catch (SQLException ex) {
-            Logger.getLogger(daftarFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        MyConnection.buka_koneksi();
+//        String nama = regName.getText();
+//        String user = regUser.getText();
+//        String password = String.valueOf(regPass.getPassword());
+//        String alamat = regAlamat.getText();
+//        String email = regEmail.getText();
+//        
+//        PreparedStatement ps;
+//        String query = "INSERT INTO `users`(`nama`, `username`, `password`, `alamat`, `email`) VALUES (?,?,?,?,?)";
+//        try {
+//            ps = MyConnection.koneksi.prepareStatement(query);
+//            
+//            ps.setString(1, nama);
+//            ps.setString(2, user);
+//            ps.setString(3, password);
+//            ps.setString(4, alamat);
+//            ps.setString(5, email);
+//            
+//            if (user.equals("")){
+//                JOptionPane.showInternalMessageDialog(null, "menambah username");
+//            }
+//                
+//            else if (password.equals("")){
+//                JOptionPane.showInternalMessageDialog(null, "menambah password");
+//            }
+//            
+//            else if(checkUsername(user)){
+//                JOptionPane.showMessageDialog(null, "Username telah ada");
+//            }
+//            
+//            if(ps.executeUpdate() > 0){
+//                JOptionPane.showMessageDialog(null,"user telah terdaftar");
+//            } 
+//                
+//         
+//        } catch (SQLException ex) {
+//            Logger.getLogger(daftarFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
         loginUserFrame pf = new loginUserFrame();
         pf.setVisible(true);
@@ -199,30 +200,30 @@ public class daftarFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    public boolean checkUsername (String user){
-        MyConnection.buka_koneksi();
-        PreparedStatement ps;
-        ResultSet rs;
-        boolean checkUser = false;
-        String query ="SELECT * FROM `users` WHERE `username`=?";
-        
-        try {
-            ps = MyConnection.koneksi.prepareStatement(query);
-            ps.setString(1, user);
-            
-            rs = ps.executeQuery();
-            
-            if(rs.next()){
-                checkUser = true;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(daftarFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return checkUser;
-            
-    }
-    
+//    public boolean checkUsername (String user){
+//        MyConnection.buka_koneksi();
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        boolean checkUser = false;
+//        String query ="SELECT * FROM `users` WHERE `username`=?";
+//        
+//        try {
+//            ps = MyConnection.koneksi.prepareStatement(query);
+//            ps.setString(1, user);
+//            
+//            rs = ps.executeQuery();
+//            
+//            if(rs.next()){
+//                checkUser = true;
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(daftarFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return checkUser;
+//            
+//    }
+//    
     
     
     

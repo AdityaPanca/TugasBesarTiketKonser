@@ -5,17 +5,34 @@
  */
 package com.leho.login.user;
 
+import com.leho.daftar.IUser;
+import com.leho.daftar.MyConnection;
+import com.leho.daftar.daftarFrame;
+import com.leho.login.loginFrame;
+import com.leho.model.UserModel;
+import com.leho.pemesanan.pemesananFrame;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author satya
  */
 public class loginUserFrame extends javax.swing.JFrame {
-
+    public static IUser loginUser;
+    private static Connection koneksi;
+    public static UserModel usermodel = new UserModel();
     /**
      * Creates new form loginUserFrame
      */
     public loginUserFrame() {
         initComponents();
+        loginUser = new MyConnection();
     }
 
     /**
@@ -29,11 +46,11 @@ public class loginUserFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        usernameLogin = new javax.swing.JTextField();
+        userPassword = new javax.swing.JPasswordField();
+        daftarRegis = new javax.swing.JButton();
+        btnMasuk = new javax.swing.JButton();
+        keluarLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,11 +58,32 @@ public class loginUserFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
-        jButton1.setText("Daftar");
+        usernameLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameLoginActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Masuk");
+        daftarRegis.setText("Daftar");
+        daftarRegis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daftarRegisActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Keluar");
+        btnMasuk.setText("Masuk");
+        btnMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasukActionPerformed(evt);
+            }
+        });
+
+        keluarLogin.setText("Keluar");
+        keluarLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluarLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,21 +95,22 @@ public class loginUserFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(userPassword))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(daftarRegis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                                .addGap(36, 36, 36)
+                                .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(keluarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(usernameLogin)))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,21 +118,61 @@ public class loginUserFrame extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(daftarRegis)
+                    .addComponent(btnMasuk)
+                    .addComponent(keluarLogin))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+        usermodel.setUsername(usernameLogin.getText());
+	ResultSet rs = loginUser.cekLogin(usernameLogin.getText(), userPassword.getText());
+	
+            try {
+                if (rs.next()) {
+                    if(usernameLogin.getText().equals(rs.getString("username")) && userPassword.getText().equals(rs.getString("password"))){
+                       JOptionPane.showMessageDialog(null, "berhasil login");
+                       new pemesananFrame().show();
+                       this.dispose();
+                    }
+                }else{
+                       JOptionPane.showMessageDialog(null, "username atau password salah");
+                       new loginUserFrame().show();
+                       this.dispose();
+                }
+		      
+            } catch (SQLException ex) {
+                   Logger.getLogger(loginUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_btnMasukActionPerformed
+
+    private void usernameLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameLoginActionPerformed
+
+    private void keluarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarLoginActionPerformed
+        loginFrame lf = new loginFrame();
+        this.dispose();
+    }//GEN-LAST:event_keluarLoginActionPerformed
+
+    private void daftarRegisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarRegisActionPerformed
+        daftarFrame rgf = new daftarFrame();
+        rgf.setVisible(true);
+        rgf.pack();
+        rgf.setLocationRelativeTo(null);
+        rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_daftarRegisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,12 +210,12 @@ public class loginUserFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnMasuk;
+    private javax.swing.JButton daftarRegis;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton keluarLogin;
+    private javax.swing.JPasswordField userPassword;
+    private javax.swing.JTextField usernameLogin;
     // End of variables declaration//GEN-END:variables
 }

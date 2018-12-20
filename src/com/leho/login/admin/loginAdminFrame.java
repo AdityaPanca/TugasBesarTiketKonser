@@ -5,17 +5,33 @@
  */
 package com.leho.login.admin;
 
+import com.leho.admin.adminFrame;
+import com.leho.daftar.MyConnection;
+import com.leho.login.loginFrame;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import com.leho.model.AdminModel;
+
 /**
  *
  * @author satya
  */
 public class loginAdminFrame extends javax.swing.JFrame {
-
+    public static IAdmin loginAdmin;
+    private static Connection koneksi;
+    public static AdminModel adminmodel = new AdminModel();
     /**
      * Creates new form loginAdminFrame
      */
     public loginAdminFrame() {
         initComponents();
+        loginAdmin = new MyConnection();
     }
 
     /**
@@ -29,10 +45,10 @@ public class loginAdminFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        userAdmin = new javax.swing.JTextField();
+        masukAdmin = new javax.swing.JButton();
+        keluarAdmin = new javax.swing.JButton();
+        passwordAdmin = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,9 +56,19 @@ public class loginAdminFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
-        jButton1.setText("Masuk");
+        masukAdmin.setText("Masuk");
+        masukAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                masukAdminActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Keluar");
+        keluarAdmin.setText("Keluar");
+        keluarAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluarAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,14 +81,14 @@ public class loginAdminFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1))
+                    .addComponent(userAdmin)
+                    .addComponent(passwordAdmin))
                 .addGap(79, 79, 79))
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(masukAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(keluarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
         layout.setVerticalGroup(
@@ -71,21 +97,48 @@ public class loginAdminFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(masukAdmin)
+                    .addComponent(keluarAdmin))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void keluarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarAdminActionPerformed
+        loginFrame lf = new loginFrame();
+        this.dispose();
+    }//GEN-LAST:event_keluarAdminActionPerformed
+
+    private void masukAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masukAdminActionPerformed
+        adminmodel.setUsername(userAdmin.getText());
+	ResultSet rs = loginAdmin.cekLoginAdmin(userAdmin.getText(), passwordAdmin.getText());
+	
+            try {
+                if (rs.next()) {
+                    if(userAdmin.getText().equals(rs.getString("username")) && passwordAdmin.getText().equals(rs.getString("password"))){
+                       JOptionPane.showMessageDialog(null, "berhasil login");
+                       new adminFrame().show();
+                       this.dispose();
+                    }
+                }else{
+                       JOptionPane.showMessageDialog(null, "username atau password salah");
+                       new loginAdminFrame().show();
+                       this.dispose();
+                }
+		      
+            } catch (SQLException ex) {
+                   Logger.getLogger(loginAdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_masukAdminActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -122,11 +175,11 @@ public class loginAdminFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton keluarAdmin;
+    private javax.swing.JButton masukAdmin;
+    private javax.swing.JPasswordField passwordAdmin;
+    private javax.swing.JTextField userAdmin;
     // End of variables declaration//GEN-END:variables
 }

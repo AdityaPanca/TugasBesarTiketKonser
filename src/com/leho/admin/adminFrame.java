@@ -5,18 +5,59 @@
  */
 package com.leho.admin;
 
+import com.leho.daftar.MyConnection;
+import com.leho.model.TiketModel;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author satya
  */
 public class adminFrame extends javax.swing.JFrame {
-
+    public static Itiket update;
+    private static Connection koneksi;
+    public static TiketModel tiketmodel; 
+    private Itiket itiket = new MyConnection();
     /**
      * Creates new form adminFrame
      */
     public adminFrame() {
         initComponents();
+        update = new MyConnection();
+        tiketmodel = new TiketModel();
+        tiketmodel = adminFrame.tiketmodel;
+        isiTiket();
+                
     }
+    
+    private void Enable(){
+	
+    }
+		
+    public void isiTiket(){
+		Enable();
+		try {
+		ResultSet r = itiket.ekonomi(tiketmodel.getStok());
+		
+			if (r.next()) {
+				String stok  = r.getString("stok");
+				String harga = r.getString("harga");
+				
+				stokEko.setText(stok);
+				hargaEko.setText(harga);
+				
+			
+			}
+		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(rootPane, "Terjadi suatu kesalahan");
+		}
+                
+                
+		
+	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,16 +71,18 @@ public class adminFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        stokEko = new javax.swing.JTextField();
+        stokVip = new javax.swing.JTextField();
+        stokVvip = new javax.swing.JTextField();
+        hargaEko = new javax.swing.JTextField();
+        hargaVip = new javax.swing.JTextField();
+        hargaVvip = new javax.swing.JTextField();
+        simpanTiket = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        updateEko = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        updateVvip = new javax.swing.JButton();
+        updateVip = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,25 +92,44 @@ public class adminFrame extends javax.swing.JFrame {
 
         jLabel3.setText("VVIP");
 
-        jTextField1.setText("stok");
+        stokEko.setText("stok");
 
-        jTextField2.setText("stok");
+        stokVip.setText("stok");
 
-        jTextField3.setText("stok");
+        stokVvip.setText("stok");
 
-        jTextField4.setText("harga");
+        hargaEko.setText("harga");
 
-        jTextField5.setText("harga");
+        hargaVip.setText("harga");
 
-        jTextField6.setText("harga");
+        hargaVvip.setText("harga");
+        hargaVvip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hargaVvipActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Simpan");
+        simpanTiket.setText("Simpan");
+        simpanTiket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanTiketActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Hapus");
 
-        jButton3.setText("Update");
+        updateEko.setText("Update");
+        updateEko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEkoActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Keluar");
+
+        updateVvip.setText("Update");
+
+        updateVip.setText("Update");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,67 +140,83 @@ public class adminFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(stokEko, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stokVip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stokVvip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hargaVvip, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                            .addComponent(hargaEko, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hargaVip, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateEko, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateVvip, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(simpanTiket, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(stokEko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hargaEko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateEko))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(hargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(updateVip))
+                    .addComponent(stokVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(stokVvip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(hargaVvip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(updateVvip)))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(simpanTiket)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
                     .addComponent(jButton4))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void simpanTiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanTiketActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_simpanTiketActionPerformed
+
+    private void updateEkoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEkoActionPerformed
+        enable();
+        updateEko.setEnabled(false);
+    }//GEN-LAST:event_updateEkoActionPerformed
+
+    private void hargaVvipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaVvipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hargaVvipActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,18 +254,20 @@ public class adminFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField hargaEko;
+    private javax.swing.JTextField hargaVip;
+    private javax.swing.JTextField hargaVvip;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton simpanTiket;
+    private javax.swing.JTextField stokEko;
+    private javax.swing.JTextField stokVip;
+    private javax.swing.JTextField stokVvip;
+    private javax.swing.JButton updateEko;
+    private javax.swing.JButton updateVip;
+    private javax.swing.JButton updateVvip;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,8 +26,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButton2" max="32767" attributes="0"/>
-                  <Component id="jButton1" pref="131" max="32767" attributes="0"/>
+                  <Component id="userMasuk" max="32767" attributes="0"/>
+                  <Component id="adminMasuk" pref="131" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="115" max="32767" attributes="0"/>
           </Group>
@@ -37,27 +37,30 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="58" max="-2" attributes="0"/>
+              <Component id="adminMasuk" min="-2" pref="58" max="-2" attributes="0"/>
               <EmptySpace pref="66" max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="58" max="-2" attributes="0"/>
+              <Component id="userMasuk" min="-2" pref="58" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="adminMasuk">
       <Properties>
         <Property name="text" type="java.lang.String" value="Admin"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminMasukActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="userMasuk">
       <Properties>
         <Property name="text" type="java.lang.String" value="User"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userMasukActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

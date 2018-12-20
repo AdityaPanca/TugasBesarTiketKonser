@@ -52,9 +52,15 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                           <Component id="regPassword" max="32767" attributes="0"/>
                           <Component id="regNama" max="32767" attributes="0"/>
                           <Component id="regUsername" max="32767" attributes="0"/>
+=======
+                          <Component id="regPass" max="32767" attributes="0"/>
+                          <Component id="regName" max="32767" attributes="0"/>
+                          <Component id="regUser" max="32767" attributes="0"/>
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
                           <Component id="regEmail" alignment="1" pref="205" max="32767" attributes="0"/>
                           <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -82,17 +88,29 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="regNama" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="regName" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
               </Group>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="regUsername" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="regUser" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="regPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                  <Component id="regPass" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -140,6 +158,7 @@
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
     </Component>
+<<<<<<< HEAD
     <Component class="javax.swing.JTextField" name="regNama">
     </Component>
     <Component class="javax.swing.JTextField" name="regUsername">
@@ -147,6 +166,15 @@
     <Component class="javax.swing.JTextField" name="regEmail">
     </Component>
     <Component class="javax.swing.JPasswordField" name="regPassword">
+=======
+    <Component class="javax.swing.JTextField" name="regName">
+    </Component>
+    <Component class="javax.swing.JTextField" name="regUser">
+    </Component>
+    <Component class="javax.swing.JTextField" name="regEmail">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="regPass">
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     </Component>
     <Component class="javax.swing.JButton" name="btnRegister">
       <Properties>

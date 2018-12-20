@@ -6,9 +6,14 @@
 package com.leho.login.admin;
 
 import com.leho.admin.adminFrame;
+<<<<<<< HEAD
 import com.leho.daftar.MyConnection;
 import com.leho.login.loginFrame;
 import java.sql.Connection;
+=======
+import com.leho.config.MyConnection;
+import com.leho.login.loginFrame;
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,22 +21,41 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+<<<<<<< HEAD
 import com.leho.model.AdminModel;
 
+=======
+import com.leho.service.*;
+import com.leho.tiket.*;
+import java.sql.Connection;
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
 /**
  *
  * @author satya
  */
 public class loginAdminFrame extends javax.swing.JFrame {
+<<<<<<< HEAD
     public static IAdmin loginAdmin;
     private static Connection koneksi;
     public static AdminModel adminmodel = new AdminModel();
+=======
+
+    public static serviceLogin userLogin;
+    private static Connection connection;
+    public static userModel usermodel = new userModel();
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     /**
      * Creates new form loginAdminFrame
      */
     public loginAdminFrame() {
+        
         initComponents();
+<<<<<<< HEAD
         loginAdmin = new MyConnection();
+=======
+        userLogin = new MyConnection();
+
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     }
 
     /**
@@ -114,10 +138,18 @@ public class loginAdminFrame extends javax.swing.JFrame {
 
     private void keluarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarAdminActionPerformed
         loginFrame lf = new loginFrame();
+<<<<<<< HEAD
+=======
+        lf.setVisible(true);
+        lf.pack();
+        lf.setLocationRelativeTo(null);
+        lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
         this.dispose();
     }//GEN-LAST:event_keluarAdminActionPerformed
 
     private void masukAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masukAdminActionPerformed
+<<<<<<< HEAD
         adminmodel.setUsername(userAdmin.getText());
 	ResultSet rs = loginAdmin.cekLoginAdmin(userAdmin.getText(), passwordAdmin.getText());
 	
@@ -137,6 +169,27 @@ public class loginAdminFrame extends javax.swing.JFrame {
             } catch (SQLException ex) {
                    Logger.getLogger(loginAdminFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
+=======
+            usermodel.setUsername(userAdmin.getText());
+	    ResultSet rs = userLogin.cekLoginAdmin(userAdmin.getText(), passwordAdmin.getText());
+            try {
+            if(rs.next()){
+		usermodel.setUsername(rs.getString("username"));
+                JOptionPane.showMessageDialog(null, "YES");
+            }else{
+                JOptionPane.showMessageDialog(null, "NO");
+            }
+        } catch (SQLException ex) {
+                        Logger.getLogger(loginAdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+    adminFrame af = new adminFrame();
+        af.setVisible(true);
+        af.pack();
+        af.setLocationRelativeTo(null);
+        af.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     }//GEN-LAST:event_masukAdminActionPerformed
     
     /**

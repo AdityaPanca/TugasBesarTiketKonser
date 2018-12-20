@@ -5,6 +5,7 @@
  */
 package com.leho.admin;
 
+<<<<<<< HEAD
 import com.leho.daftar.MyConnection;
 import com.leho.model.TiketModel;
 import java.sql.Connection;
@@ -12,19 +13,39 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+=======
+import com.leho.config.MyConnection;
+import com.leho.login.loginFrame;
+import com.leho.login.user.loginUserFrame;
+import com.leho.service.serviceTiket;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import com.leho.tiket.*;
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
 /**
  *
  * @author satya
  */
 public class adminFrame extends javax.swing.JFrame {
+<<<<<<< HEAD
     public static Itiket update;
     private static Connection koneksi;
     public static TiketModel tiketmodel; 
     private Itiket itiket = new MyConnection();
+=======
+     private  serviceTiket tiket;
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     /**
      * Creates new form adminFrame
      */
+    
     public adminFrame() {
+        tiket =new MyConnection();
         initComponents();
         update = new MyConnection();
         tiketmodel = new TiketModel();
@@ -36,6 +57,7 @@ public class adminFrame extends javax.swing.JFrame {
     private void Enable(){
 	
     }
+<<<<<<< HEAD
 		
     public void isiTiket(){
 		Enable();
@@ -59,6 +81,9 @@ public class adminFrame extends javax.swing.JFrame {
 		
 	}
 
+=======
+    
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,6 +96,7 @@ public class adminFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+<<<<<<< HEAD
         stokEko = new javax.swing.JTextField();
         stokVip = new javax.swing.JTextField();
         stokVvip = new javax.swing.JTextField();
@@ -83,6 +109,20 @@ public class adminFrame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         updateVvip = new javax.swing.JButton();
         updateVip = new javax.swing.JButton();
+=======
+        stokEkonomi = new javax.swing.JTextField();
+        stokVip = new javax.swing.JTextField();
+        stokVvip = new javax.swing.JTextField();
+        hargaEkonomi = new javax.swing.JTextField();
+        hargaVip = new javax.swing.JTextField();
+        hargaVvip = new javax.swing.JTextField();
+        btnSimpan = new javax.swing.JButton();
+        hapusAdm = new javax.swing.JButton();
+        updateAdm = new javax.swing.JButton();
+        keluarAdm = new javax.swing.JButton();
+        Stok = new java.awt.Label();
+        Harga = new java.awt.Label();
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +132,7 @@ public class adminFrame extends javax.swing.JFrame {
 
         jLabel3.setText("VVIP");
 
+<<<<<<< HEAD
         stokEko.setText("stok");
 
         stokVip.setText("stok");
@@ -113,19 +154,54 @@ public class adminFrame extends javax.swing.JFrame {
         simpanTiket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanTiketActionPerformed(evt);
+=======
+        hargaEkonomi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hargaEkonomiActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Hapus");
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
+        hapusAdm.setText("Hapus");
+        hapusAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusAdmActionPerformed(evt);
+            }
+        });
+
+        updateAdm.setText("Update");
+        updateAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateAdmActionPerformed(evt);
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
+            }
+        });
+
+        keluarAdm.setText("Keluar");
+        keluarAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluarAdmActionPerformed(evt);
+            }
+        });
+
+<<<<<<< HEAD
         updateEko.setText("Update");
         updateEko.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateEkoActionPerformed(evt);
             }
         });
+=======
+        Stok.setText("Stok");
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
 
-        jButton4.setText("Keluar");
+        Harga.setText("Harga");
 
         updateVvip.setText("Update");
 
@@ -136,10 +212,11 @@ public class adminFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
@@ -167,22 +244,68 @@ public class adminFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
+=======
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(stokEkonomi, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(stokVip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(stokVvip, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(hargaVvip, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                    .addComponent(hargaEkonomi, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(hargaVip, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(hapusAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(updateAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(keluarAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(Stok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addComponent(Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(stokEko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hargaEko, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updateEko))
+=======
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Stok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Harga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(stokEkonomi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hargaEkonomi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
+<<<<<<< HEAD
                         .addComponent(hargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(updateVip))
+=======
+                        .addComponent(hargaVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
                     .addComponent(stokVip, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,6 +314,7 @@ public class adminFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(stokVvip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+<<<<<<< HEAD
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(hargaVvip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(updateVvip)))
@@ -200,11 +324,22 @@ public class adminFrame extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton4))
                 .addContainerGap(31, Short.MAX_VALUE))
+=======
+                    .addComponent(hargaVvip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSimpan)
+                    .addComponent(hapusAdm)
+                    .addComponent(updateAdm)
+                    .addComponent(keluarAdm))
+                .addContainerGap(22, Short.MAX_VALUE))
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void simpanTiketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanTiketActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_simpanTiketActionPerformed
@@ -218,6 +353,48 @@ public class adminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_hargaVvipActionPerformed
 
+=======
+    private void hapusAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusAdmActionPerformed
+        clearFields();
+    }//GEN-LAST:event_hapusAdmActionPerformed
+
+    private void keluarAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarAdmActionPerformed
+        loginFrame lf = new loginFrame();
+        lf.setVisible(true);
+        lf.pack();
+        lf.setLocationRelativeTo(null);
+        lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_keluarAdmActionPerformed
+
+    private void hargaEkonomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hargaEkonomiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hargaEkonomiActionPerformed
+
+    private void updateAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAdmActionPerformed
+//            String stok = stokEkonomi.getText();
+//            String harga = hargaEkonomi.getText();
+//            
+//            Ekonomi e = new Ekonomi();
+//            e.setStok(stok);
+//            e.setHarga(harga);
+//            
+//            eko.insertEkonomi(e);
+            
+    }//GEN-LAST:event_updateAdmActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+        tiket.inputEkonomi(stokEkonomi.getText(), hargaEkonomi.getText());
+        tiket.inputVip(stokVip.getText(), hargaVip.getText());
+        tiket.inputVvip(stokVvip.getText(), hargaVvip.getText());
+       JOptionPane.showMessageDialog(rootPane, "Data berhasil ditambah");
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void clearFields() {
+        hapusAdm.setVisible(true);
+    }
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     /**
      * @param args the command line arguments
      */
@@ -254,6 +431,7 @@ public class adminFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JTextField hargaEko;
     private javax.swing.JTextField hargaVip;
     private javax.swing.JTextField hargaVvip;
@@ -269,5 +447,22 @@ public class adminFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateEko;
     private javax.swing.JButton updateVip;
     private javax.swing.JButton updateVvip;
+=======
+    private java.awt.Label Harga;
+    private java.awt.Label Stok;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton hapusAdm;
+    private javax.swing.JTextField hargaEkonomi;
+    private javax.swing.JTextField hargaVip;
+    private javax.swing.JTextField hargaVvip;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton keluarAdm;
+    private javax.swing.JTextField stokEkonomi;
+    private javax.swing.JTextField stokVip;
+    private javax.swing.JTextField stokVvip;
+    private javax.swing.JButton updateAdm;
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     // End of variables declaration//GEN-END:variables
 }

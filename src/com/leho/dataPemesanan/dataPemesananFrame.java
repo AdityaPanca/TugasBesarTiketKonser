@@ -5,6 +5,9 @@
  */
 package com.leho.dataPemesanan;
 
+import com.leho.login.user.loginUserFrame;
+import javax.swing.JFrame;
+
 /**
  *
  * @author satya
@@ -36,8 +39,8 @@ public class dataPemesananFrame extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        hapusPem = new javax.swing.JButton();
+        keluarPem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,9 +54,19 @@ public class dataPemesananFrame extends javax.swing.JFrame {
 
         jButton1.setText("Selanjutnya");
 
-        jButton2.setText("Hapus");
+        hapusPem.setText("Hapus");
+        hapusPem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusPemActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Keluar");
+        keluarPem.setText("Keluar");
+        keluarPem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluarPemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,9 +94,15 @@ public class dataPemesananFrame extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+<<<<<<< HEAD
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                        .addComponent(hapusPem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(keluarPem, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
                         .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
@@ -111,14 +130,31 @@ public class dataPemesananFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(hapusPem)
+                    .addComponent(keluarPem))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void keluarPemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarPemActionPerformed
+        loginUserFrame pf = new loginUserFrame();
+        pf.setVisible(true);
+        pf.pack();
+        pf.setLocationRelativeTo(null);
+        pf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_keluarPemActionPerformed
+
+    private void hapusPemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusPemActionPerformed
+        clearFields();
+    }//GEN-LAST:event_hapusPemActionPerformed
+
+    private void clearFields() {
+        hapusPem.setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -155,9 +191,8 @@ public class dataPemesananFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton hapusPem;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -166,5 +201,8 @@ public class dataPemesananFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton keluarPem;
     // End of variables declaration//GEN-END:variables
+
+    
 }

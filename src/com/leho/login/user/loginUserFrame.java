@@ -5,6 +5,7 @@
  */
 package com.leho.login.user;
 
+<<<<<<< HEAD
 import com.leho.daftar.IUser;
 import com.leho.daftar.MyConnection;
 import com.leho.daftar.daftarFrame;
@@ -12,6 +13,13 @@ import com.leho.login.loginFrame;
 import com.leho.model.UserModel;
 import com.leho.pemesanan.pemesananFrame;
 import java.sql.Connection;
+=======
+import com.leho.config.MyConnection;
+import com.leho.daftar.daftarFrame;
+import com.leho.login.loginFrame;
+import com.leho.pemesanan.pemesananFrame;
+import java.sql.PreparedStatement;
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -46,7 +54,11 @@ public class loginUserFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+<<<<<<< HEAD
         usernameLogin = new javax.swing.JTextField();
+=======
+        userLogin = new javax.swing.JTextField();
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
         userPassword = new javax.swing.JPasswordField();
         daftarRegis = new javax.swing.JButton();
         btnMasuk = new javax.swing.JButton();
@@ -58,9 +70,15 @@ public class loginUserFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Password");
 
+<<<<<<< HEAD
         usernameLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameLoginActionPerformed(evt);
+=======
+        userLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userLoginActionPerformed(evt);
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
             }
         });
 
@@ -70,6 +88,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                 daftarRegisActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
 
         btnMasuk.setText("Masuk");
         btnMasuk.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +97,16 @@ public class loginUserFrame extends javax.swing.JFrame {
             }
         });
 
+=======
+
+        btnMasuk.setText("Masuk");
+        btnMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasukActionPerformed(evt);
+            }
+        });
+
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
         keluarLogin.setText("Keluar");
         keluarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +130,7 @@ public class loginUserFrame extends javax.swing.JFrame {
                             .addComponent(daftarRegis, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -111,6 +141,17 @@ public class loginUserFrame extends javax.swing.JFrame {
                                 .addGap(1, 1, 1)
                                 .addComponent(usernameLogin)))))
                 .addContainerGap(34, Short.MAX_VALUE))
+=======
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(keluarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(userLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(25, Short.MAX_VALUE))
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +159,11 @@ public class loginUserFrame extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
+<<<<<<< HEAD
                     .addComponent(usernameLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                    .addComponent(userLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -135,6 +180,7 @@ public class loginUserFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+<<<<<<< HEAD
         usermodel.setUsername(usernameLogin.getText());
 	ResultSet rs = loginUser.cekLogin(usernameLogin.getText(), userPassword.getText());
 	
@@ -162,6 +208,52 @@ public class loginUserFrame extends javax.swing.JFrame {
 
     private void keluarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarLoginActionPerformed
         loginFrame lf = new loginFrame();
+=======
+//        MyConnection.buka_koneksi();
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        
+//        String user = userLogin.getText();
+//        String password = String.valueOf(userPassword.getPassword());
+//        
+//        String query ="SELECT * FROM `users` WHERE `username`=? AND `password`=?";
+//        try {
+//            ps = MyConnection.koneksi.prepareStatement(query);
+//            
+//            ps.setString(1, user);
+//            ps.setString(2, password);
+//            
+//            rs = ps.executeQuery();
+//            
+//            if(rs.next()){
+//                JOptionPane.showMessageDialog(null, "YES");
+//            }else {
+//                JOptionPane.showMessageDialog(null, "NO");
+//                
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(loginUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        pemesananFrame pf = new pemesananFrame();
+        pf.setVisible(true);
+        pf.pack();
+        pf.setLocationRelativeTo(null);
+        pf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_btnMasukActionPerformed
+
+    private void userLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userLoginActionPerformed
+
+    private void keluarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarLoginActionPerformed
+        loginFrame lf = new loginFrame();
+        lf.setVisible(true);
+        lf.pack();
+        lf.setLocationRelativeTo(null);
+        lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
         this.dispose();
     }//GEN-LAST:event_keluarLoginActionPerformed
 
@@ -215,7 +307,12 @@ public class loginUserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton keluarLogin;
+<<<<<<< HEAD
     private javax.swing.JPasswordField userPassword;
     private javax.swing.JTextField usernameLogin;
+=======
+    private javax.swing.JTextField userLogin;
+    private javax.swing.JPasswordField userPassword;
+>>>>>>> 55cb1d3cb952c2359c975c31b6000e11ba624b4d
     // End of variables declaration//GEN-END:variables
 }
